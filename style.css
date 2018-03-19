@@ -1,0 +1,31 @@
+canvas {
+    border: 1px solid black;
+  }
+body {
+  margin: 0;
+  background: linear-gradient(132deg, #ec5218, #1665c1, #2ecc71,#e67e22);
+  background-size: 400% 400%;
+  animation: Anime 10s ease infinite;
+  }
+@keyframes Anime {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+h1{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: Open Sans, sans-serif;
+  color: #fff;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 4em;
+  background-color: black;
+  padding: 5px;
+  background: linear-gradient(100deg, #ff5252, #e67e22);
+  background-size: 400% 400%;
+  animation: Anime 20s ease infinite;
+}
