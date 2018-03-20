@@ -19,13 +19,13 @@ h1{
   transform: translateX(-50%) translateY(-50%);
   font-family: Open Sans, sans-serif;
   color: #fff;
-  font-weight: 400;
+  font-weight: 800;
   text-transform: uppercase;
   text-align: center;
   font-size: 4em;
   background-color: black;
-  padding: 5px;
-  background: linear-gradient(100deg, #ff5252, #e67e22);
+  padding: 1px;
+  background: linear-gradient(132deg, #ff5252, #e67e22);
   background-size: 400% 400%;
   animation: Anime 20s ease infinite;
 }

@@ -38,7 +38,7 @@ var dy = 20;
 var radie = 30;
 */
 
-/*function Rectangle(x, y, dx, dy, längd, color){
+function Rectangle(x, y, dx, dy, längd, color){
   this.x = x;
   this.y = y;
   this.dx = dx;
@@ -48,10 +48,23 @@ var radie = 30;
 
   this.draw = function() {
     c.beginPath();
-    c.fillRect(this.x, this.y, this.längd, this.längd)M
-    c.fillStyle = color;
+    c.fillRect(this.x, this.y, this.längd, this.längd);
+    c.fillStyle = this.color;
+    c.fill();
   }
-}*/
+  this.update = function(){
+  if (this.x + längd> innerWidth || this.x - längd < 0) {
+    this.dx = -this.dx;
+  }
+  if (this.y + längd > innerHeight || this.y - längd < 0) {
+    this.dy = -this.dy;
+  }
+  this.x += this.dx;
+  this.y += this.dy;
+
+  this.draw();
+  }
+}
 
 
 function Circle(x, y, dx, dy, radie, color) {
@@ -85,22 +98,29 @@ function Circle(x, y, dx, dy, radie, color) {
   }
 }
 
-function RandomfillCircle(){
+function RandomfillShape(){
   var o = Math.round, r = Math.random, s = 255;
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + (r()+ 0.5).toFixed(1) + ')';
 }
 
-
+var rectArray =[];
 var circleArray = [];
 
-for (var i = 0; i < 100; i++) {
-  var color = RandomfillCircle();
+for (var i = 0; i < 200; i++) {
+  var color = RandomfillShape();
+  var längd = (Math.random() *50) + 25;
   var radie = (Math.random() *50) + 25;
-  var x = Math.random() * (innerWidth - radie * 2) + radie;
-  var y = Math.random() * (innerHeight - radie * 2) + radie;
-  var dx = (Math.random() - 0.5) * 20;
-  var dy = (Math.random() - 0.5) * 10;
-  circleArray.push(new Circle(x, y, dx, dy, radie, color));
+  var xC = Math.random() * (innerWidth - radie * 2) + radie;
+  var yC = Math.random() * (innerHeight - radie * 2) + radie;
+  var dxC = (Math.random() - 0.5) * 20;
+  var dyC = (Math.random() - 0.5) * 10;
+  var xR = Math.random() * (innerWidth - längd * 2) + längd;
+  var yR = Math.random() * (innerHeight - längd * 2) + längd;
+  var dxR = (Math.random() - 0.5) * 20;
+  var dyR = (Math.random() - 0.5) * 10;
+
+  circleArray.push(new Circle(xC, yC, dxC, dyC, radie, color));
+  rectArray.push(new Rectangle(xR, yR, dxR, dyR, längd, color));
 }
 
 function animate() {
@@ -109,6 +129,7 @@ function animate() {
 
   for (var i = 0; i < circleArray.length; i++) {
     circleArray[i].update();
+    rectArray[i].update();
    }
 }
 
